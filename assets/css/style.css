@@ -252,15 +252,28 @@ img { max-width: 100%; height: auto; display: block; }
 .breadcrumb span[aria-current] { color: var(--color-text); font-weight: 600; }
 
 /* Hero */
+/* A foto vem por style inline no HTML. Só longhands aqui: a shorthand
+   `background` seria sobrescrita por completo pelo inline, levando junto o
+   cover, o center e o degrade de leitura. O véu fica num ::before. */
 .hero {
   position: relative;
+  isolation: isolate;
   color: var(--color-white);
   padding: 100px 0 90px;
-  background: linear-gradient(180deg, rgba(10,10,10,0.72), rgba(10,10,10,0.86)),
-    center/cover no-repeat;
+  background-color: #0a0a0a;
+  background-position: 58% center;
+  background-size: cover;
+  background-repeat: no-repeat;
   min-height: 560px;
   display: flex;
   align-items: center;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(8, 8, 8, 0.62) 0%, rgba(8, 8, 8, 0.74) 45%, rgba(8, 8, 8, 0.88) 100%);
 }
 .hero__content { max-width: 640px; }
 .hero__eyebrow {
@@ -735,8 +748,19 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 @media (max-width: 720px) {
-  .hero { padding: 64px 0 56px; min-height: 0; }
-  .hero__actions .btn { flex: 1 1 auto; }
+  /* o herói precisa caber quase inteiro na primeira tela, com o CTA à vista */
+  .hero { padding: 44px 0 40px; min-height: 0; }
+  .hero h1 {
+    font-size: 1.8rem;
+    line-height: 1.18;
+    margin-bottom: 0.5em;
+    text-wrap: balance;
+  }
+  .hero__eyebrow { font-size: 0.72rem; padding: 5px 12px; margin-bottom: 16px; }
+  .hero p.lead { font-size: 1rem; line-height: 1.5; }
+  .hero__actions { margin-top: 22px; gap: 10px; }
+  .hero__actions .btn { flex: 1 1 auto; width: 100%; }
+  .hero__actions .btn--outline { font-size: 0.9rem; padding-top: 12px; padding-bottom: 12px; }
   .section { padding: 52px 0; }
   .grid--3, .grid--4 { grid-template-columns: 1fr; }
   .trust-bar .container { grid-template-columns: 1fr; }
