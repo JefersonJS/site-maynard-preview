@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=2">
+<link rel="stylesheet" href="assets/css/style.css?v=3">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "AutoRepair", "name": "Maynard Auto Center", "url": "https://maynardautocenter.com.br", "telephone": "+55-71-99626-6142", "address": {"@type": "PostalAddress", "streetAddress": "Av. Antônio Carlos Magalhães, nº 3410", "addressLocality": "Salvador", "addressRegion": "BA", "postalCode": "41820-000", "addressCountry": "BR"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "18:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "12:00"}], "geo": {"@type": "GeoCoordinates", "latitude": -12.9868909, "longitude": -38.4659888}, "image": "assets/images/brake_disc.jpg"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "serviceType": "Suspensão e Freios em Salvador | Maynard Auto Center", "provider": {"@type": "AutoRepair", "name": "Maynard Auto Center"}, "areaServed": {"@type": "City", "name": "Salvador"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quais os sinais de problema na suspensão?", "acceptedAnswer": {"@type": "Answer", "text": "O carro balança muito em buracos, faz barulho ao passar por lombadas, puxa para um lado, ou o volante treme. Esses sinais indicam desgaste em amortecedores, molas, buchas ou outros componentes."}}, {"@type": "Question", "name": "Como saber se o freio precisa de revisão?", "acceptedAnswer": {"@type": "Answer", "text": "Barulho ao frear, pedal mole ou que vai fundo, vibração ao frear, ou o carro demora mais para parar. Qualquer um desses sinais pede revisão imediata."}}, {"@type": "Question", "name": "Com que frequência revisar os freios?", "acceptedAnswer": {"@type": "Answer", "text": "A revisão das pastilhas deve ser feita a cada 20.000 a 30.000 km, dependendo do estilo de direção e do veículo. Discos e fluido de freio têm prazos próprios definidos pelo fabricante."}}, {"@type": "Question", "name": "A suspensão afeta a segurança do carro?", "acceptedAnswer": {"@type": "Answer", "text": "Diretamente. Uma suspensão com problema reduz o controle do veículo, aumenta a distância de frenagem e compromete o comportamento do carro em curvas e manobras de emergência."}}, {"@type": "Question", "name": "Quanto tempo leva a revisão de suspensão?", "acceptedAnswer": {"@type": "Answer", "text": "Depende do serviço. Uma troca de amortecedores ou pastilhas pode ser feita no mesmo dia. Serviços mais extensos podem levar até dois dias. O prazo é informado no diagnóstico."}}]}</script>
@@ -27,9 +27,23 @@
       <img src="assets/images/logo_maynard.png" alt="Maynard Auto Center">
     </a>
     <nav class="site-header__nav" aria-label="Navegação principal">
-      <a href="index.html#servicos">Início</a>
-      <a href="servicos.html">Serviços</a>
-      <a href="blog.html">Blog</a>
+      <a href="sobre.html">Sobre</a>
+      <div class="has-submenu">
+        <a href="servicos.html">Serviços</a>
+        <button class="has-submenu__toggle" aria-expanded="false" aria-controls="submenu-servicos" aria-label="Abrir lista de serviços"><svg class="has-submenu__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <ul class="submenu" id="submenu-servicos">
+          <li><a href="servicos.html">Todos os serviços</a></li>
+        <li><a href="troca-de-oleo.html">Troca de Óleo</a></li>
+        <li><a href="mecanica-completa.html">Mecânica Completa</a></li>
+        <li><a href="alinhamento-balanceamento.html">Alinhamento e Balanceamento</a></li>
+        <li><a href="checkup-eletronico.html">Checkup Eletrônico</a></li>
+        <li><a href="suspensao-freios.html">Suspensão e Freios</a></li>
+        <li><a href="limpeza-bicos-injetores.html">Limpeza de Bicos Injetores</a></li>
+        <li><a href="revisao-de-viagem.html">Revisão de Viagem</a></li>
+        <li><a href="veiculos-importados.html">Veículos Importados</a></li>
+        </ul>
+      </div>
+      <a href="conteudo.html">Conteúdo</a>
       <a href="index.html#localizacao">Localização</a>
       <a href="contato.html">Contato</a>
       <div class="site-header__nav-extra">
@@ -184,6 +198,6 @@
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.1 8.1 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8 1-.2.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.3-.5-.3Z"/></svg>
 </a>
 
-<script src="assets/js/main.js?v=2"></script>
+<script src="assets/js/main.js?v=3"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Gera as páginas internas do protótipo (serviços, posts, sobre, contato, blog)
+"""Gera as páginas internas do protótipo (serviços, posts, sobre, contato, conteúdo)
 reaproveitando o conteúdo já aprovado em maynard_seo/content/*.html, dentro do
 novo layout (header/footer/CTA/whatsapp compartilhados do prototype/)."""
 
@@ -49,42 +49,42 @@ IMAGENS = {
 
 SERVICOS = [
     {
-        "slug": "troca-de-oleo", "titulo": "Troca de Óleo em Salvador | Maynard Auto Center",
+        "slug": "troca-de-oleo", "menu": "Troca de Óleo", "titulo": "Troca de Óleo em Salvador | Maynard Auto Center",
         "meta_desc": "Troca de óleo para nacionais e importados em Salvador, Av. ACM. Óleo mineral, semissintético e sintético. Agende pelo WhatsApp.",
         "imagem": "oil_change", "whats_msg": "Quero%20agendar%20troca%20de%20óleo",
     },
     {
-        "slug": "mecanica-completa", "titulo": "Mecânica Completa em Salvador | Nacionais e Importados",
+        "slug": "mecanica-completa", "menu": "Mecânica Completa", "titulo": "Mecânica Completa em Salvador | Nacionais e Importados",
         "meta_desc": "Mecânica geral para nacionais e importados em Salvador. Suspensão, freios, injeção, câmbio e mais. Av. ACM, 3410.",
         "imagem": "general_mechanic", "whats_msg": "Quero%20agendar%20mecânica%20completa",
     },
     {
-        "slug": "alinhamento-balanceamento", "titulo": "Alinhamento e Balanceamento em Salvador | Maynard Auto Center",
+        "slug": "alinhamento-balanceamento", "menu": "Alinhamento e Balanceamento", "titulo": "Alinhamento e Balanceamento em Salvador | Maynard Auto Center",
         "meta_desc": "Alinhamento e balanceamento para nacionais e importados em Salvador. Av. ACM, 3410. Agende pelo WhatsApp.",
         "imagem": "wheel_service", "whats_msg": "Quero%20agendar%20alinhamento%20e%20balanceamento",
     },
     {
-        "slug": "checkup-eletronico", "titulo": "Checkup Eletrônico em Salvador | Diagnóstico Automotivo",
+        "slug": "checkup-eletronico", "menu": "Checkup Eletrônico", "titulo": "Checkup Eletrônico em Salvador | Diagnóstico Automotivo",
         "meta_desc": "Diagnóstico eletrônico completo para nacionais e importados em Salvador. Av. ACM, 3410. Agende agora.",
         "imagem": "diagnostic_scanner", "whats_msg": "Quero%20agendar%20checkup%20eletrônico",
     },
     {
-        "slug": "suspensao-freios", "titulo": "Suspensão e Freios em Salvador | Maynard Auto Center",
+        "slug": "suspensao-freios", "menu": "Suspensão e Freios", "titulo": "Suspensão e Freios em Salvador | Maynard Auto Center",
         "meta_desc": "Revisão de suspensão e freios em Salvador. Diagnóstico, amortecedores, pastilhas, discos e muito mais. Av. ACM, 3410.",
         "imagem": "brake_disc", "whats_msg": "Quero%20agendar%20revisão%20de%20suspensão%20e%20freios",
     },
     {
-        "slug": "limpeza-bicos-injetores", "titulo": "Limpeza de Bicos Injetores em Salvador | Maynard Auto Center",
+        "slug": "limpeza-bicos-injetores", "menu": "Limpeza de Bicos Injetores", "titulo": "Limpeza de Bicos Injetores em Salvador | Maynard Auto Center",
         "meta_desc": "Limpeza ultrassônica de bicos injetores em Salvador. Mais potência, menos consumo. Av. ACM, 3410.",
         "imagem": "engine_parts", "whats_msg": "Quero%20agendar%20limpeza%20de%20bicos%20injetores",
     },
     {
-        "slug": "revisao-de-viagem", "titulo": "Revisão de Viagem em Salvador | Maynard Auto Center",
+        "slug": "revisao-de-viagem", "menu": "Revisão de Viagem", "titulo": "Revisão de Viagem em Salvador | Maynard Auto Center",
         "meta_desc": "Revisão completa antes de viagem longa em Salvador. Freios, pneus, fluidos, elétrica e mais. Av. ACM, 3410.",
         "imagem": "road_trip", "whats_msg": "Quero%20agendar%20revisão%20de%20viagem",
     },
     {
-        "slug": "veiculos-importados", "titulo": "Oficina para Carros Importados em Salvador | Maynard Auto Center",
+        "slug": "veiculos-importados", "menu": "Veículos Importados", "titulo": "Oficina para Carros Importados em Salvador | Maynard Auto Center",
         "meta_desc": "Mecânica especializada em carros importados em Salvador. BMW, Mercedes, Audi, Volkswagen e mais. Av. ACM, 3410.",
         "imagem": "luxury_import", "whats_msg": "Quero%20agendar%20revisão%20do%20meu%20importado",
     },
@@ -141,11 +141,29 @@ PAGINAS_INSTITUCIONAIS = [
 ]
 
 
+CHEVRON_ICON = '<svg class="has-submenu__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
+
+
+def submenu_servicos_html():
+    itens = "\n".join(
+        f'        <li><a href="{s["slug"]}.html">{s["menu"]}</a></li>'
+        for s in SERVICOS
+    )
+    return f"""      <div class="has-submenu">
+        <a href="servicos.html">Serviços</a>
+        <button class="has-submenu__toggle" aria-expanded="false" aria-controls="submenu-servicos" aria-label="Abrir lista de serviços">{CHEVRON_ICON}</button>
+        <ul class="submenu" id="submenu-servicos">
+          <li><a href="servicos.html">Todos os serviços</a></li>
+{itens}
+        </ul>
+      </div>"""
+
+
 def nav_html():
     return f"""    <nav class="site-header__nav" aria-label="Navegação principal">
-      <a href="index.html#servicos">Início</a>
-      <a href="servicos.html">Serviços</a>
-      <a href="blog.html">Blog</a>
+      <a href="sobre.html">Sobre</a>
+{submenu_servicos_html()}
+      <a href="conteudo.html">Conteúdo</a>
       <a href="index.html#localizacao">Localização</a>
       <a href="contato.html">Contato</a>
       <div class="site-header__nav-extra">
@@ -258,7 +276,7 @@ def page_shell(title, description, canonical_slug, image_rel, schemas, body):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=2">
+<link rel="stylesheet" href="assets/css/style.css?v=3">
 {schema_scripts}
 </head>
 <body>
@@ -273,7 +291,7 @@ def page_shell(title, description, canonical_slug, image_rel, schemas, body):
 
 {whatsapp_float_html()}
 
-<script src="assets/js/main.js?v=2"></script>
+<script src="assets/js/main.js?v=3"></script>
 </body>
 </html>
 """
@@ -390,7 +408,7 @@ def sidebar_post(post):
       </div>""")
     blocos.append(f"""<div class="side-card">
         <h4>Leia Também</h4>
-        <ul><li><a href="blog.html">Ver todas as publicações</a></li></ul>
+        <ul><li><a href="conteudo.html">Ver todas as publicações</a></li></ul>
       </div>""")
     return "\n      ".join(blocos)
 
@@ -404,7 +422,7 @@ def gerar_pagina_post(post):
     schemas = atualizar_imagem_schemas(schemas, img_rel)
     categoria_label = CATEGORIAS[post["categoria"]]
 
-    body = f"""{breadcrumb([("Início", "index.html"), ("Blog", "blog.html"), (post["titulo"], None)])}
+    body = f"""{breadcrumb([("Início", "index.html"), ("Conteúdo", "conteudo.html"), (post["titulo"], None)])}
 <section class="title-band">
   <div class="container">
     <div class="eyebrow-row">
@@ -530,7 +548,7 @@ def gerar_pagina_contato():
     print("Gerado: contato.html")
 
 
-def gerar_blog_index():
+def gerar_conteudo_index():
     cards = []
     for p in POSTS:
         img_key = p["imagem"]
@@ -546,11 +564,11 @@ def gerar_blog_index():
         </div>
       </div>""")
 
-    body = f"""{breadcrumb([("Início", "index.html"), ("Blog", None)])}
+    body = f"""{breadcrumb([("Início", "index.html"), ("Conteúdo", None)])}
 <section class="section" style="padding-top:32px;">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Blog</span>
+      <span class="eyebrow">Conteúdo</span>
       <h1>Dicas de manutenção e cuidados com o carro</h1>
       <p>Conteúdo prático sobre manutenção automotiva, direto da equipe da Maynard Auto Center em Salvador.</p>
     </div>
@@ -569,16 +587,16 @@ def gerar_blog_index():
     }]
 
     html = page_shell(
-        title="Blog | Dicas de Manutenção Automotiva - MAYNARD AUTO CENTER",
+        title="Conteúdo | Dicas de Manutenção Automotiva - MAYNARD AUTO CENTER",
         description="Dicas de manutenção, cuidados com o veículo e conteúdo sobre oficinas em Salvador, direto da Maynard Auto Center.",
-        canonical_slug="blog",
+        canonical_slug="conteudo",
         image_rel="assets/images/workshop_generic.jpg",
         schemas=schemas,
         body=body,
     )
-    with open(os.path.join(OUT_DIR, "blog.html"), "w", encoding="utf-8") as f:
+    with open(os.path.join(OUT_DIR, "conteudo.html"), "w", encoding="utf-8") as f:
         f.write(html)
-    print("Gerado: blog.html")
+    print("Gerado: conteudo.html")
 
 
 if __name__ == "__main__":
@@ -588,5 +606,5 @@ if __name__ == "__main__":
         gerar_pagina_post(p)
     gerar_pagina_sobre()
     gerar_pagina_contato()
-    gerar_blog_index()
+    gerar_conteudo_index()
     print("\nTudo gerado com sucesso.")

@@ -161,6 +161,87 @@ img { max-width: 100%; height: auto; display: block; }
 
 .site-header__nav-extra { display: none; }
 
+/* Submenu de serviços */
+.has-submenu { position: relative; display: flex; align-items: center; gap: 4px; }
+.has-submenu > a {
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.has-submenu > a:hover { color: var(--color-primary); text-decoration: none; }
+.has-submenu::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 16px;
+}
+.has-submenu__toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.has-submenu__chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+.submenu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: -18px;
+  z-index: 60;
+  margin: 0;
+  padding: 8px 0;
+  list-style: none;
+  min-width: 252px;
+  background: var(--color-black);
+  border-top: 3px solid var(--color-primary);
+  border-radius: 0 0 6px 6px;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+.has-submenu:hover .submenu,
+.has-submenu:focus-within .submenu,
+.has-submenu.is-open .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.has-submenu:hover .has-submenu__chevron,
+.has-submenu:focus-within .has-submenu__chevron,
+.has-submenu.is-open .has-submenu__chevron { transform: rotate(180deg); }
+.submenu li { margin: 0; }
+.submenu a {
+  display: block;
+  padding: 10px 18px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.86);
+  white-space: nowrap;
+}
+.submenu a:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.submenu li:first-child a {
+  font-weight: 700;
+  color: var(--color-white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 4px;
+  padding-bottom: 12px;
+}
+
 /* Breadcrumb */
 .breadcrumb {
   font-size: 0.85rem;
@@ -609,6 +690,48 @@ img { max-width: 100%; height: auto; display: block; }
   }
   .site-header__nav-extra .site-header__phone { justify-content: center; }
   .site-header__nav-extra .btn { width: 100%; }
+
+  .has-submenu {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .has-submenu::after { display: none; }
+  .has-submenu__toggle {
+    width: 44px;
+    height: 44px;
+    margin: -12px 0;
+  }
+  .submenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    background: transparent;
+    border-top: none;
+    border-radius: 0;
+    box-shadow: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .has-submenu.is-open .submenu { max-height: 600px; padding: 6px 0 2px; }
+  .submenu a {
+    padding: 11px 0 11px 14px;
+    border-left: 2px solid rgba(255, 255, 255, 0.18);
+    white-space: normal;
+  }
+  .submenu a:hover { background: transparent; }
+  .submenu li:first-child a {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 11px;
+  }
+  /* o botão flutuante não pode cobrir o CTA dentro do menu aberto */
+  .site-header.is-open ~ .whatsapp-float { opacity: 0; pointer-events: none; }
 }
 
 @media (max-width: 720px) {

@@ -14,6 +14,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  var submenus = document.querySelectorAll(".has-submenu");
+  submenus.forEach(function (item) {
+    var toggle = item.querySelector(".has-submenu__toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      var isOpen = item.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+
+  function fecharSubmenus() {
+    submenus.forEach(function (item) {
+      item.classList.remove("is-open");
+      var toggle = item.querySelector(".has-submenu__toggle");
+      if (toggle) toggle.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  document.addEventListener("click", function (event) {
+    if (!event.target.closest(".has-submenu")) fecharSubmenus();
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") fecharSubmenus();
+  });
+
   document.querySelectorAll(".faq-item").forEach(function (item) {
     var question = item.querySelector(".faq-item__q");
     question.addEventListener("click", function () {
