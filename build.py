@@ -211,8 +211,8 @@ def footer_html():
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Maynard Auto Center — Av. Antônio Carlos Magalhães, nº 3410, Iguatemi, Salvador/BA.</span>
-      <span>Protótipo de layout — em desenvolvimento</span>
+      <span>© 2026 Maynard Auto Center · Av. Antônio Carlos Magalhães, nº 3410, Iguatemi, Salvador/BA.</span>
+      <span>Protótipo de layout · em desenvolvimento</span>
     </div>
   </div>
 </footer>"""
@@ -502,9 +502,9 @@ def gerar_pagina_contato():
   <div class="container location-grid" style="margin-top:24px;margin-bottom:72px;">
     <div>
       <ul class="info-list">
-        <li>{PIN_ICON}<span>Av. Antônio Carlos Magalhães, nº 3410 — no estacionamento do Sam's Club, ao lado do Hiper BomPreço, Iguatemi, Salvador, BA. CEP 41820-000.</span></li>
+        <li>{PIN_ICON}<span>Av. Antônio Carlos Magalhães, nº 3410 · no estacionamento do Sam's Club, ao lado do Hiper BomPreço, Iguatemi, Salvador, BA. CEP 41820-000.</span></li>
         <li>{CLOCK_ICON}<span>Segunda a sexta: 8h às 18h · Sábado: 8h às 12h · Domingo: fechado.</span></li>
-        <li>{PHONE_ICON}<span>(71) 99626-6142 — WhatsApp e telefone.</span></li>
+        <li>{PHONE_ICON}<span>(71) 99626-6142 · WhatsApp e telefone.</span></li>
       </ul>
       <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;">
         <a class="btn btn--primary" href="{WHATSAPP_URL_GENERIC}">{WHATSAPP_ICON} Chamar no WhatsApp</a>
@@ -518,7 +518,7 @@ def gerar_pagina_contato():
 </section>"""
 
     html = page_shell(
-        title="Contato | Maynard Auto Center — Oficina em Salvador - MAYNARD AUTO CENTER",
+        title="Contato | Maynard Auto Center · Oficina em Salvador - MAYNARD AUTO CENTER",
         description="Entre em contato com a Maynard Auto Center em Salvador. WhatsApp: (71) 99626-6142. Seg-Sex 8h-18h | Sáb 8h-12h.",
         canonical_slug="contato",
         image_rel=img_rel,
