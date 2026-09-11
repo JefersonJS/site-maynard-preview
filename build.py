@@ -276,7 +276,7 @@ def page_shell(title, description, canonical_slug, image_rel, schemas, body):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=5">
+<link rel="stylesheet" href="assets/css/style.css?v=6">
 {schema_scripts}
 </head>
 <body>
@@ -291,7 +291,7 @@ def page_shell(title, description, canonical_slug, image_rel, schemas, body):
 
 {whatsapp_float_html()}
 
-<script src="assets/js/main.js?v=5"></script>
+<script src="assets/js/main.js?v=6"></script>
 </body>
 </html>
 """
